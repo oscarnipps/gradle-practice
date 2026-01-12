@@ -58,3 +58,34 @@ dependencies {
     debugImplementation(libs.androidx.compose.ui.tooling)
     debugImplementation(libs.androidx.compose.ui.test.manifest)
 }
+
+println("APP: This is executed during the configuration phase")
+
+tasks.register("task1"){
+    println("APP REGISTER TASK1: This is executed during the configuration phase")
+}
+
+tasks.register("task2"){
+    println("APP REGISTER TASK2: This is executed during the configuration phase")
+}
+
+tasks.named("task1"){
+    println("APP NAMED TASK1: This is executed during the configuration phase")
+    doFirst {
+        println("APP NAMED TASK1 - doFirst: This is executed during the execution phase")
+    }
+    doLast {
+        println("APP NAMED TASK1 - doLast: This is executed during the execution phase")
+    }
+}
+
+
+tasks.named("task2"){
+    println("APP NAMED TASK2: This is executed during the configuration phase")
+    doFirst {
+        println("APP NAMED TASK2 - doFirst: This is executed during the execution phase")
+    }
+    doLast {
+        println("APP NAMED TASK2 - doLast: This is executed during the execution phase")
+    }
+}
